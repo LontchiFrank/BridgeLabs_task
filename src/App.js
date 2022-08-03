@@ -1,12 +1,13 @@
 import logo from "./logo.svg";
 import "./App.css";
+import { Provider } from "react-redux";
 import Navigation from "./Navigation";
 
 function App() {
   return (
-    <div className="App">
+    <Provider store={store}>
       <Navigation />
-    </div>
+    </Provider>
   );
 }
 
