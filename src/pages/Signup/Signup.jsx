@@ -9,6 +9,8 @@ function Signup() {
     tel: "",
     password: "",
   });
+  const [selectedImage, setSelectedImage] = useState();
+
   const { fname, lname, email, tel, password } = formData;
 
   const [isOpen, setIsOpen] = useState(false);
@@ -40,7 +42,10 @@ function Signup() {
     setIsOpen(false);
     console.log(isOpen);
   };
-
+  const handleImageChange = (e) => {
+    let image = e.target.files[0];
+    setSelectedImage(image);
+  };
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -116,6 +121,7 @@ function Signup() {
                     name="fname"
                     type="text"
                     value={fname}
+                    onChange={(e) => handleChange(e)}
                     placeholder="Enter First Name"
                   />
                 </div>
@@ -125,6 +131,7 @@ function Signup() {
                     name="lname"
                     type="text"
                     value={lname}
+                    onChange={(e) => handleChange(e)}
                     placeholder="Enter Last Name"
                   />
                 </div>
@@ -134,6 +141,7 @@ function Signup() {
                     name="email"
                     type="email"
                     value={email}
+                    onChange={(e) => handleChange(e)}
                     placeholder="Enter Email"
                   />
                 </div>
@@ -143,6 +151,7 @@ function Signup() {
                     name="tel"
                     type="tel"
                     value={tel}
+                    onChange={(e) => handleChange(e)}
                     placeholder="Enter Telephone Number"
                   />
                 </div>
@@ -152,13 +161,20 @@ function Signup() {
                     name="password"
                     type="password"
                     value={password}
+                    onChange={(e) => handleChange(e)}
                     placeholder="Enter Password"
                   />
                 </div>
                 <div className="lay2">
                   <label>Upload Image</label>
                   <div className="files_bton">
-                    <input type="file" id="file" name="img" accept="image/*" />
+                    <input
+                      type="file"
+                      id="file"
+                      name="img"
+                      accept="image/*"
+                      onChange={(e) => handleImageChange(e)}
+                    />
                     <label for="file">Choose File</label>
                   </div>
                 </div>
