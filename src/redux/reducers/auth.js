@@ -1,4 +1,4 @@
-import { REGISTER_SUCCESS } from "./Types";
+import { REGISTER_SUCCESS } from "../Types";
 
 const initialState = {
   isAuthenticated: null,
