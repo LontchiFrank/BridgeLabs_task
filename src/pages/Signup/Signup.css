@@ -1,10 +1,11 @@
 .main {
   width: 100%;
   height: 100vh;
-  background-color: rgb(237, 245, 252);
+  background-color: rgb(244, 247, 250);
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 .container-middle {
   width: 60%;
@@ -29,6 +30,7 @@
 .overlay {
   width: 95%;
   height: 97%;
+  /* padding-left: 2em; */
   border-radius: 14px;
   background-color: #3c37ff;
 }
@@ -36,16 +38,119 @@
   width: 100%;
   display: flex;
   justify-content: left;
-  padding-left: 3em;
+  padding-left: 2em;
   padding-top: 2em;
 }
 .head h3 {
   color: white;
 }
 .title {
-  padding-left: 3em;
+  padding-left: 2em;
   text-align: left;
 }
 .title h1 {
   color: white;
+}
+.bodies {
+  width: 80%;
+  padding-left: 2em;
+  margin-bottom: 3em;
+  text-align: left;
+  color: white;
+}
+.foot {
+  margin-left: 2em;
+  width: 320px;
+  height: 200px;
+  border-radius: 12px;
+  /* padding-left: 2em; */
+  padding: 10px;
+  background-color: #0a067e69;
+}
+.foot p {
+  text-align: left;
+  color: white;
+  margin-bottom: 2em;
+}
+.bton {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.bton button {
+  width: 150px;
+  height: 65px;
+  border: none;
+  border-radius: 8px;
+  background-color: white;
+  font-weight: 700;
+  cursor: pointer;
+}
+.thirdpart {
+  padding: 1.2em;
+}
+.secondpart {
+  padding: 1.2em;
+}
+.lay1 {
+  margin-bottom: 1em;
+  display: flex;
+  flex-direction: column;
+}
+.lay1 input {
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  height: 42px;
+  padding-left: 1.4em;
+}
+.lay1 input ::placeholder {
+  padding-left: 2em;
+  /* margin-left: 2em; */
+}
+.forms {
+  padding: 2em;
+  padding-top: 1em;
+}
+.title-head {
+  padding-left: 2em;
+  padding-right: 2em;
+}
+.bton1 {
+  width: 100%;
+  display: flex;
+  justify-content: left;
+  cursor: pointer;
+}
+.bton1 button {
+  width: 180px;
+  height: 65px;
+  border: none;
+  font-size: 16px;
+  color: white;
+  font-weight: 700;
+  border-radius: 8px;
+  background-color: #3c37ff;
+  cursor: pointer;
+}
+.lay1 label {
+  font-weight: 700;
+  color: rgb(145, 150, 151);
+}
+.lay2 {
+  display: flex;
+  padding-bottom: 10px;
+  justify-content: space-between;
+}
+input[type="file"] {
+  display: none;
+}
+.files_bton label {
+  width: 180px;
+  height: 35px;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.7em;
+  background-color: #544ef7;
 }
