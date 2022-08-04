@@ -1,7 +1,13 @@
 import React, { useRef, useState } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { registerUsers } from "../../redux/actions/auth";
 import "./Signup.css";
 
 function Signup() {
+  let navigate = useNavigate();
+  let dispatch = useDispatch();
+
   const [formData, setFormData] = useState({
     fname: "",
     lname: "",
@@ -9,6 +15,11 @@ function Signup() {
     tel: "",
     password: "",
   });
+  const [emailData, setEmailData] = useState({
+    emails: "",
+    passwords: "",
+  });
+  const { emails, passwords } = emailData;
   const [selectedImage, setSelectedImage] = useState();
 
   const { fname, lname, email, tel, password } = formData;
@@ -50,6 +61,32 @@ function Signup() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const loginChange = (e) => {
+    setEmailData({
+      ...emailData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const onsubmit = (e) => {
+    e.preventDefault();
+    const data = { ...formData, selectedImage };
+    registerUsers(data)
+      .then(() => {
+        console.log("Successfull");
+        navigate("/dashboard");
+      })
+      .catch((err) => {
+        console.log(err, "Failed");
+      });
+  };
+
+  const onSubmit2 = (e) => {
+    e.preventDefault();
+    const data = { emailData };
+  };
+
+  console.log(selectedImage);
   return (
     <div className="main">
       <div className="container-middle">
@@ -93,14 +130,26 @@ function Signup() {
               <h2>Sign In</h2>
             </div>
             <div className="form-part">
-              <form className="forms">
+              <form onSubmit={(e) => onsubmit(e)} className="forms">
                 <div className="lay1">
                   <label>Email:</label>
-                  <input type="email" placeholder="Enter Email" />
+                  <input
+                    type="email"
+                    value={emails}
+                    name="emails"
+                    onChange={() => loginChange()}
+                    placeholder="Enter Email"
+                  />
                 </div>
                 <div className="lay1">
                   <label>Password:</label>
-                  <input type="password" placeholder="Enter Password" />
+                  <input
+                    type="password"
+                    name="passwords"
+                    onChange={() => loginChange()}
+                    value={passwords}
+                    placeholder="Enter Password"
+                  />
                 </div>
                 <div className="bton1">
                   <button>Login</button>
@@ -114,7 +163,7 @@ function Signup() {
               <h2>Sign Up</h2>
             </div>
             <div className="form-part">
-              <form className="forms">
+              <form onSubmit={(e) => onsubmit(e)} className="forms">
                 <div className="lay1">
                   <label>First Name:</label>
                   <input
@@ -179,7 +228,7 @@ function Signup() {
                   </div>
                 </div>
                 <div className="bton1">
-                  <button>Create Account</button>
+                  <button type="submit">Create Account</button>
                 </div>
               </form>
             </div>

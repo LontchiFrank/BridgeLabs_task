@@ -1,5 +1,11 @@
-import { REGISTER_SUCCESS } from "./Types";
+import { REGISTER_SUCCESS } from "../Types";
 import axios from "axios";
+
+const config = {
+  headers: {
+    "Content-Type": "application/json",
+  },
+};
 
 export const registerUsers = async (data) => {
   try {
