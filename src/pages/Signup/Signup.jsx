@@ -1,7 +1,8 @@
 import React, { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { registerUsers } from "../../redux/actions/auth";
+import { login, registerUsers } from "../../redux/actions/auth";
+import Signin from "../Signin/Signin";
 import "./Signup.css";
 
 function Signup() {
@@ -9,20 +10,16 @@ function Signup() {
   let dispatch = useDispatch();
 
   const [formData, setFormData] = useState({
-    fname: "",
-    lname: "",
+    first_name: "",
+    last_name: "",
     email: "",
-    tel: "",
+    phone: "",
     password: "",
   });
-  const [emailData, setEmailData] = useState({
-    emails: "",
-    passwords: "",
-  });
-  const { emails, passwords } = emailData;
+
   const [selectedImage, setSelectedImage] = useState();
 
-  const { fname, lname, email, tel, password } = formData;
+  const { first_name, last_name, email, phone, password } = formData;
 
   const [isOpen, setIsOpen] = useState(false);
   const myElement = useRef(null);
@@ -61,13 +58,6 @@ function Signup() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const loginChange = (e) => {
-    setEmailData({
-      ...emailData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
   const onsubmit = (e) => {
     e.preventDefault();
     const data = { ...formData, selectedImage };
@@ -81,12 +71,8 @@ function Signup() {
       });
   };
 
-  const onSubmit2 = (e) => {
-    e.preventDefault();
-    const data = { emailData };
-  };
-
   console.log(selectedImage);
+
   return (
     <div className="main">
       <div className="container-middle">
@@ -126,36 +112,7 @@ function Signup() {
         </div>
         {isOpen ? (
           <div className="secondpart" ref={second}>
-            <div className="title-head">
-              <h2>Sign In</h2>
-            </div>
-            <div className="form-part">
-              <form onSubmit={(e) => onsubmit(e)} className="forms">
-                <div className="lay1">
-                  <label>Email:</label>
-                  <input
-                    type="email"
-                    value={emails}
-                    name="emails"
-                    onChange={() => loginChange()}
-                    placeholder="Enter Email"
-                  />
-                </div>
-                <div className="lay1">
-                  <label>Password:</label>
-                  <input
-                    type="password"
-                    name="passwords"
-                    onChange={() => loginChange()}
-                    value={passwords}
-                    placeholder="Enter Password"
-                  />
-                </div>
-                <div className="bton1">
-                  <button>Login</button>
-                </div>
-              </form>
-            </div>
+            <Signin />
           </div>
         ) : (
           <div className="secondpart" ref={second}>
@@ -167,9 +124,9 @@ function Signup() {
                 <div className="lay1">
                   <label>First Name:</label>
                   <input
-                    name="fname"
+                    name="first_name"
                     type="text"
-                    value={fname}
+                    value={first_name}
                     onChange={(e) => handleChange(e)}
                     placeholder="Enter First Name"
                   />
@@ -177,9 +134,9 @@ function Signup() {
                 <div className="lay1">
                   <label>Last Name:</label>
                   <input
-                    name="lname"
+                    name="last_name"
                     type="text"
-                    value={lname}
+                    value={last_name}
                     onChange={(e) => handleChange(e)}
                     placeholder="Enter Last Name"
                   />
@@ -197,9 +154,9 @@ function Signup() {
                 <div className="lay1">
                   <label>Telephone Number:</label>
                   <input
-                    name="tel"
+                    name="phone"
                     type="tel"
-                    value={tel}
+                    value={phone}
                     onChange={(e) => handleChange(e)}
                     placeholder="Enter Telephone Number"
                   />
