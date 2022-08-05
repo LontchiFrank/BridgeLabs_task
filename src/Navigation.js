@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Dashboard from "./pages/Dashboard/Dashboard";
+import Home from "./pages/Home/Home";
+import Products from "./pages/Products/Products";
 import Signup from "./pages/Signup/Signup";
 
 function ScrollToTop({ children }) {

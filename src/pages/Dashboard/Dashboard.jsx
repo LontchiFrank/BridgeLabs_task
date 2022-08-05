@@ -1,10 +1,22 @@
 import React from "react";
-
-function Dashboard() {
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import Navbar from "../../components/Navbar/Navbar";
+import Home from "../Home/Home";
+import Products from "../Products/Products";
+import "./dash.css";
+function Dashboard({ children }) {
   return (
-    <div>
-      <h2>This is the Dashboard</h2>
-    </div>
+    <>
+      <Navbar />
+      {children}
+      {/* <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route path="/home" exact element={<Home />} />
+          <Route path="/products" element={<Products />} />
+        </Routes>
+      </BrowserRouter> */}
+    </>
   );
 }
 
