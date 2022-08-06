@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+
+import Card from "../../components/Card/Card";
 import Navbar from "../../components/Navbar/Navbar";
 import { _getCategories } from "../../redux/actions/categories";
+import "./Home.css";
 
 function Home() {
   const [category, setCategory] = useState();
@@ -8,12 +12,13 @@ function Home() {
     _getCategories()
       .then((data) => {
         setCategory(data.payload);
-        console.log(category);
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
+
+  console.log(category);
   return (
     <div className="set">
       {/* <div style={{ width: "15%", height: "100%" }}> */}
@@ -22,23 +27,32 @@ function Home() {
       <div
         style={{
           width: "100%",
-          height: "100vh",
+          height: "100%",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          backgroundColor: "#f6f6ff",
+          backgroundColor: "white",
         }}
       >
         <div
           style={{
             width: "80%",
             height: "100%",
-            backgroundColor: "white",
+            borderRadius: "18px",
+            backgroundColor: "#f6f9fe",
             padding: "4em",
             border: "12px",
           }}
         >
           <h1>Home</h1>
+          <div className="hold">
+            {category &&
+              category.map((el, key) => (
+                <div key={key} className="arrainged">
+                  <Card el={el} />
+                </div>
+              ))}
+          </div>
         </div>
       </div>
     </div>

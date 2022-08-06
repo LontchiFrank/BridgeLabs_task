@@ -3,7 +3,8 @@
 }
 
 .navbar {
-  background-color: #f6f6ff;
+  /* background-color: #f6f6ff; */
+  background-color: white;
   height: 80px;
   display: flex;
   justify-content: start;

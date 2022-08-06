@@ -6,6 +6,7 @@ export const _getCategories = async () => {
     const res = await axios.get(
       `${process.env.REACT_APP_URL}/api/category/categories`
     );
+    console.log(res.data);
     return {
       type: GET_CATEGORIES,
       payload: res.data,
