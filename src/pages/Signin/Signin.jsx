@@ -26,7 +26,7 @@ function Signin() {
     // const data = { emailData };
     login(emailData)
       .then(() => {
-        navigate("/dashboard");
+        navigate("/dashboard/*");
         console.log("successful");
       })
       .catch((err) => {

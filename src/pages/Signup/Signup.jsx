@@ -64,7 +64,7 @@ function Signup() {
     registerUsers(data)
       .then(() => {
         console.log("Successfull");
-        navigate("/dashboard");
+        navigate("/dashboard/*");
       })
       .catch((err) => {
         console.log(err, "Failed");
