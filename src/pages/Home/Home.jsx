@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from "react";
+import { FaPlus } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 
 import Card from "../../components/Card/Card";
+import Modal from "../../components/Modal/Modal";
 import Navbar from "../../components/Navbar/Navbar";
 import { _getCategories } from "../../redux/actions/categories";
 import "./Home.css";
 
 function Home() {
   const [category, setCategory] = useState();
+  const [show, setShow] = useState(false);
   useEffect(() => {
     _getCategories()
       .then((data) => {
@@ -21,6 +24,7 @@ function Home() {
   console.log(category);
   return (
     <div className="set">
+      <Modal show={show} onClose={() => setShow(false)} />
       {/* <div style={{ width: "15%", height: "100%" }}> */}
       <Navbar />
       {/* </div> */}
@@ -44,7 +48,13 @@ function Home() {
             border: "12px",
           }}
         >
-          <h1>Home</h1>
+          <div className="fill">
+            <div className="bton1">
+              <button onClick={() => setShow(true)}>
+                Create New <FaPlus />{" "}
+              </button>
+            </div>
+          </div>
           <div className="hold">
             {category &&
               category.map((el, key) => (

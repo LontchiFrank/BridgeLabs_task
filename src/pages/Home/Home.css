@@ -7,3 +7,25 @@
   margin-top: 13px;
   margin-right: 2em;
 }
+.bton1 {
+  width: 100%;
+  display: flex;
+  justify-content: left;
+  cursor: pointer;
+}
+.bton1 button {
+  width: 180px;
+  height: 65px;
+  border: none;
+  font-size: 16px;
+  color: white;
+  font-weight: 700;
+  border-radius: 8px;
+  background-color: #3c37ff;
+  cursor: pointer;
+}
+.fill {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
