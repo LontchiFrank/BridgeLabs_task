@@ -1,19 +1,20 @@
 import { GET_CATEGORIES } from "../Types";
 
-const INITIAL_STATE = {
+const initialState = {
   categories: [],
 };
 
-const getUsersRequest = (state = INITIAL_STATE, { type, payload }) => {
+export default function (state = initialState, action) {
+  const { type, payload } = action;
   switch (type) {
     case GET_CATEGORIES:
       return {
         ...state,
-        categories: payload,
+        categories: payload.category,
         loading: false,
         error: null,
       };
     default:
       return state;
   }
-};
+}
