@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import Home from "./pages/Home/Home";
 import Products from "./pages/Products/Products";
+import Profile from "./pages/Profile/Profile";
 import Signup from "./pages/Signup/Signup";
 
 function ScrollToTop({ children }) {
@@ -24,6 +25,7 @@ function Navigation() {
           <Route exact path="/dashboard" element={<Dashboard />} />
           <Route path="/home" element={<Home />} />
           <Route path="/products" element={<Products />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
       </ScrollToTop>
     </BrowserRouter>
