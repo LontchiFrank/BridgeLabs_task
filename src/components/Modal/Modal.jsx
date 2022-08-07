@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FaCross, FaTimes } from "react-icons/fa";
+import { createCategory } from "../../redux/actions/categories";
 import "./Modal.css";
 
 function Modal({ show, onClose }) {
@@ -21,6 +22,24 @@ function Modal({ show, onClose }) {
     let image = e.target.files[0];
     setSelectedImage(image);
   };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const dataToSend = new FormData();
+    dataToSend.append("image", selectedImage);
+    dataToSend.append("name", name);
+    dataToSend.append("description", description);
+
+    createCategory(dataToSend)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <div className="main">
       <div className="modal_form">
@@ -38,7 +57,7 @@ function Modal({ show, onClose }) {
             style={{ fontSize: "22px", marginTop: "12px", marginRight: "2em" }}
           />
         </div>
-        <form onSubmit className="forms">
+        <form onSubmit={(e) => handleSubmit(e)} className="forms">
           <div className="lay1">
             <label>Name:</label>
             <input
@@ -74,7 +93,7 @@ function Modal({ show, onClose }) {
             </div>
           </div>
           <div className="bton1">
-            <button>Submit</button>
+            <button type="submit">Submit</button>
           </div>
         </form>
       </div>
