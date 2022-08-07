@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { FaCross, FaTimes } from "react-icons/fa";
 import { createCategory } from "../../redux/actions/categories";
+import Alert from "../alert/Alert";
 import "./Modal.css";
 
 function Modal({ show, onClose }) {
+  const [showing, setShowing] = useState(true);
   const [formData, setFormData] = useState({
     name: "",
     description: "",
@@ -34,9 +36,11 @@ function Modal({ show, onClose }) {
     createCategory(dataToSend)
       .then((res) => {
         console.log(res);
+        <Alert bool={showing} shows={showing} />;
       })
       .catch((err) => {
         console.log(err);
+        <Alert bool={false} shows={showing} />;
       });
   };
 

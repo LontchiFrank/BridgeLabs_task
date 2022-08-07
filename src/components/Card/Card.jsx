@@ -17,7 +17,16 @@ function Card({ el }) {
       return string;
     }
   }
+  function truncateStringDescription(string, limit) {
+    if (string.length > limit) {
+      return string.substring(0, limit) + "...";
+    } else {
+      return string;
+    }
+  }
+
   const date = truncateString(el.created_at, 10);
+  const describe = truncateStringDescription(el.description, 12);
 
   return (
     <div className="card">
@@ -47,7 +56,7 @@ function Card({ el }) {
         </div>
         <div className="discript">
           <p style={{ color: "#828487" }}>Description</p>
-          <p style={{ color: "#828487" }}>{el.description}</p>
+          <p style={{ color: "#828487" }}>{describe}</p>
         </div>
       </div>
     </div>
