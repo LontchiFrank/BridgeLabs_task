@@ -54,11 +54,7 @@ function Card({ el }) {
       </div>
       <div className="card_body">
         {/* <img src={el.image} alt="" style={{ width: "100%", height: "100%" }} /> */}
-        <img
-          src="https://www.freepik.com/vectors/love-heart"
-          alt=""
-          style={{ width: "100%", height: "100%" }}
-        />
+        <img src={el.image} alt="" style={{ width: "100%", height: "100%" }} />
         <figcaption>
           <div onClick={() => handleUpdate()}>
             <h3 style={{ marginRight: "8px" }}>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FaPlus } from "react-icons/fa";
 import { useDispatch } from "react-redux";
+import Alert from "../../components/alert/Alert";
 
 import Card from "../../components/Card/Card";
 import Modal from "../../components/Modal/Modal";
@@ -11,10 +12,13 @@ import "./Home.css";
 function Home() {
   const [category, setCategory] = useState();
   const [show, setShow] = useState(false);
+  const [showing, setShowing] = useState(true);
+
   useEffect(() => {
     _getCategories()
       .then((data) => {
         setCategory(data.payload);
+        setShowing(true);
       })
       .catch((err) => {
         console.log(err);

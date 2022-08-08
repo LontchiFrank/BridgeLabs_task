@@ -6,6 +6,7 @@ import "./Modal.css";
 
 function Modal({ show, onClose }) {
   const [showing, setShowing] = useState(false);
+  const [createState, setCreateState] = useState("");
   const [formData, setFormData] = useState({
     name: "",
     description: "",
@@ -36,10 +37,12 @@ function Modal({ show, onClose }) {
     createCategory(dataToSend)
       .then((res) => {
         console.log(res);
+        setCreateState(true);
         setShowing(true);
       })
       .catch((err) => {
         console.log(err);
+        setCreateState(false);
       });
   };
 
@@ -47,11 +50,10 @@ function Modal({ show, onClose }) {
     <>
       <div className="main2">
         <Alert
-          bool={showing}
           toggleAlert={() => setShowing(!showing)}
+          type={createState == true && "success"}
           shows={showing}
         />
-        ;
         <div className="modal_form">
           <div
             style={{

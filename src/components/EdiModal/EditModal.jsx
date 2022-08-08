@@ -1,14 +1,12 @@
 import React, { useState } from "react";
 import { FaCross, FaTimes } from "react-icons/fa";
-import {
-  createCategory,
-  _updateCategory,
-} from "../../redux/actions/categories";
+import { _updateCategory } from "../../redux/actions/categories";
 import Alert from "../alert/Alert";
 import "../Modal/Modal.css";
 
 function EditModal({ show, onClose, category }) {
   const [showing, setShowing] = useState(false);
+  const [createState, setCreateState] = useState("");
   const [formData, setFormData] = useState({
     name: category.name,
     description: category.description,
@@ -38,9 +36,11 @@ function EditModal({ show, onClose, category }) {
     console.log(dataToSend, id);
     _updateCategory(dataToSend, id)
       .then((res) => {
+        setCreateState(true);
         console.log(res);
       })
       .catch((err) => {
+        setCreateState(false);
         console.log(err);
       });
   };
@@ -51,9 +51,9 @@ function EditModal({ show, onClose, category }) {
         <Alert
           bool={showing}
           toggleAlert={() => setShowing(!showing)}
+          type={createState == true && "success"}
           shows={showing}
         />
-        ;
         <div className="modal_form">
           <div
             style={{

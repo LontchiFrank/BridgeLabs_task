@@ -5,6 +5,7 @@ import "./Del.css";
 
 function DelModal({ show, onClose, catID }) {
   const [showing, setShowing] = useState(false);
+  const [createState, setCreateState] = useState("");
   if (!show) {
     return null;
   }
@@ -13,9 +14,13 @@ function DelModal({ show, onClose, catID }) {
     _deleteCategory(catID)
       .then((res) => {
         console.log(res);
+        setCreateState(true);
+        setShowing(true);
+        window.location.reload();
       })
       .catch((err) => {
         console.log(err);
+        setCreateState(false);
       });
   };
 
@@ -24,6 +29,7 @@ function DelModal({ show, onClose, catID }) {
       <Alert
         bool={showing}
         toggleAlert={() => setShowing(!showing)}
+        type={createState == true && "success"}
         shows={showing}
       />
       <div className="del">
