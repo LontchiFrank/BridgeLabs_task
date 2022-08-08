@@ -21,7 +21,7 @@ function Navigation() {
     <BrowserRouter>
       <ScrollToTop>
         <Routes>
-          <Route exact path="/signup" element={<Signup />} />
+          <Route exact path="/" element={<Signup />} />
           <Route exact path="/dashboard" element={<Dashboard />} />
           <Route path="/home" element={<Home />} />
           <Route path="/products" element={<Products />} />
