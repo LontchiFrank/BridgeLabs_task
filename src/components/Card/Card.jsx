@@ -53,7 +53,6 @@ function Card({ el }) {
         </div>
       </div>
       <div className="card_body">
-        {/* <img src={el.image} alt="" style={{ width: "100%", height: "100%" }} /> */}
         <img src={el.image} alt="" style={{ width: "100%", height: "100%" }} />
         <figcaption>
           <div onClick={() => handleUpdate()}>
