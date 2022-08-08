@@ -3,6 +3,7 @@ import "../Signup/Signup.css";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { login } from "../../redux/actions/auth";
+import Alert from "../../components/alert/Alert";
 function Signin() {
   let navigate = useNavigate();
   let dispatch = useDispatch();
@@ -13,6 +14,9 @@ function Signin() {
     password: "",
   });
   const { email, password } = emailData;
+
+  const [showing, setShowing] = useState(false);
+  const [createState, setCreateState] = useState("");
 
   const loginChange = (e) => {
     setEmailData({
@@ -28,14 +32,23 @@ function Signin() {
       .then(() => {
         navigate("/home");
         console.log("successful");
+
+        setCreateState(true);
       })
       .catch((err) => {
         console.log(err, "Failed");
+        setCreateState(false);
       });
   };
 
   return (
     <div>
+      <Alert
+        bool={showing}
+        toggleAlert={() => setShowing(!showing)}
+        type={createState == true && "success"}
+        shows={showing}
+      />
       <div className="title-head">
         <h2>Sign In</h2>
       </div>

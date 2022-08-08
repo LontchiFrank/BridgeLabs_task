@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import Alert from "../../components/alert/Alert";
 import { login, registerUsers } from "../../redux/actions/auth";
 import Signin from "../Signin/Signin";
 import "./Signup.css";
@@ -16,7 +17,8 @@ function Signup() {
     phone: "",
     password: "",
   });
-
+  const [showing, setShowing] = useState(false);
+  const [createState, setCreateState] = useState("");
   const [selectedImage, setSelectedImage] = useState();
 
   const { first_name, last_name, email, phone, password } = formData;
@@ -65,9 +67,11 @@ function Signup() {
       .then(() => {
         console.log("Successfull");
         navigate("/home");
+        setCreateState(true);
       })
       .catch((err) => {
         console.log(err, "Failed");
+        setCreateState(false);
       });
   };
 
@@ -75,6 +79,12 @@ function Signup() {
 
   return (
     <div className="main">
+      <Alert
+        bool={showing}
+        toggleAlert={() => setShowing(!showing)}
+        type={createState == true && "success"}
+        shows={showing}
+      />
       <div className="container-middle">
         <div className="firstpart" ref={first}>
           <div className="overlay">
