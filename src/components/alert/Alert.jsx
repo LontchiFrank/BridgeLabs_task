@@ -2,17 +2,24 @@ import React, { useState, useEffect } from "react";
 import tick from "../../assets/1.jpg";
 import cross from "../../assets/2.png";
 import "./alert.css";
-function Alert({ bool, shows }) {
+function Alert({ bool, shows, toggleAlert }) {
   const [toggle, setToggle] = useState(bool);
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(shows);
   console.log(bool);
-  //   useEffect(() => {
-  //     setTimeout(() => {
-  //       console.log("This will run after 1 second!");
-  //       setIsOpen(false);
-  //     }, 2000);
-  //     // return () => setIsOpen(false);
-  //   }, []);
+  useEffect(() => {
+    setTimeout(() => {
+      setIsOpen(false);
+    }, 2000);
+  }, []);
+
+  useEffect(() => {
+    if (shows) {
+      setTimeout(() => {
+        console.log("This will run after 1 second!");
+        toggleAlert();
+      }, 2000);
+    }
+  }, [shows]);
 
   if (!shows) {
     return null;

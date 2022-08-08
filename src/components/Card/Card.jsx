@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "./card.css";
+import * as FaIcons from "react-icons/fa";
+import * as IoIcons from "react-icons/io";
 function Card({ el }) {
   const [check, setCheck] = useState([
     { back: "#e1f5fe", text: "#63c2ed" },
@@ -42,6 +44,15 @@ function Card({ el }) {
           alt=""
           style={{ width: "100%", height: "100%" }}
         />
+        <figcaption>
+          <h3 style={{ marginRight: "8px" }}>
+            <FaIcons.FaPen />{" "}
+          </h3>
+          <h3 className="del">
+            {" "}
+            <FaIcons.FaTrash />
+          </h3>
+        </figcaption>
       </div>
       <div className="card_footer">
         <div

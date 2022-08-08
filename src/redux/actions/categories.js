@@ -38,3 +38,21 @@ export const createCategory = async (data) => {
     }
   }
 };
+const _updateCategory = async (data) => {
+  try {
+    let res = await axios.put(
+      `${process.env.REACT_APP_URL}/users/UpdateProfile`,
+      data
+    );
+    return res.data;
+  } catch (err) {
+    if (err.response.data) {
+      return {
+        errorMessage: err.response.data.msg,
+        code: 400,
+      };
+    } else {
+      return { errorMessage: err.message, code: 400 };
+    }
+  }
+};

@@ -5,7 +5,7 @@ import Alert from "../alert/Alert";
 import "./Modal.css";
 
 function Modal({ show, onClose }) {
-  const [showing, setShowing] = useState(true);
+  const [showing, setShowing] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     description: "",
@@ -36,16 +36,21 @@ function Modal({ show, onClose }) {
     createCategory(dataToSend)
       .then((res) => {
         console.log(res);
-        <Alert bool={showing} shows={showing} />;
+        setShowing(true);
       })
       .catch((err) => {
         console.log(err);
-        <Alert bool={false} shows={showing} />;
       });
   };
 
   return (
-    <div className="main">
+    <div className="main2">
+      <Alert
+        bool={showing}
+        toggleAlert={() => setShowing(!showing)}
+        shows={showing}
+      />
+      ;
       <div className="modal_form">
         <div
           style={{

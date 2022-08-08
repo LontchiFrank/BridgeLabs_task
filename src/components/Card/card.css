@@ -24,6 +24,8 @@
   width: 100%;
   height: 50%;
   margin-bottom: 10px;
+  position: relative;
+  text-align: center;
 }
 .card_footer {
   width: 100%;
@@ -37,4 +39,42 @@
   height: 170px;
   display: flex;
   flex-direction: column;
+}
+.card_body h3 {
+  background-color: #00b4dc;
+  border: none;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 1em;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin: 0;
+  padding: 5px 10px;
+  text-transform: uppercase;
+}
+
+.card_body .del {
+  background-color: #ba035e;
+}
+
+.card_body img:hover {
+  background-color: #2e2e2e6b;
+}
+
+.card_body figcaption {
+  display: flex;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  z-index: 2;
+  -webkit-transform: translate(-50%, -50%) scale(0.5);
+  transform: translate(-50%, -50%) scale(0.5);
+  opacity: 0;
+}
+
+.card_body:hover figcaption,
+.card_body.hover figcaption {
+  -webkit-transform: translate(-50%, -50%) scale(1);
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
 }
