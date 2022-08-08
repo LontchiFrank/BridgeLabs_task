@@ -4,6 +4,7 @@ import * as FaIcons from "react-icons/fa";
 import * as IoIcons from "react-icons/io";
 import Modal from "../Modal/Modal";
 import EditModal from "../EdiModal/EditModal";
+import DelModal from "../DelModal/DelModal";
 function Card({ el }) {
   const [check, setCheck] = useState([
     { back: "#e1f5fe", text: "#63c2ed" },
@@ -12,8 +13,8 @@ function Card({ el }) {
     { back: "#dbfdee", text: "#4ad296" },
   ]);
   const [show, setShow] = useState(false);
+  const [show1, setShow1] = useState(false);
   const couleur = check[Math.floor(Math.random() * check.length)];
-  console.log(couleur);
 
   function truncateString(string, limit) {
     if (string.length > limit) {
@@ -34,11 +35,17 @@ function Card({ el }) {
     console.log(show);
   };
 
+  const handleDelete = () => {
+    setShow1(true);
+  };
+
+  console.log(show1);
   const date = truncateString(el.created_at, 10);
   const describe = truncateStringDescription(el.description, 12);
 
   return (
     <div className="card">
+      <DelModal catID={el.id} show={show1} onClose={() => setShow1(false)} />
       <EditModal category={el} show={show} onClose={() => setShow(false)} />
       <div className="card_head">
         <div className="card_name" style={{ backgroundColor: couleur.back }}>
@@ -58,10 +65,12 @@ function Card({ el }) {
               <FaIcons.FaPen />{" "}
             </h3>
           </div>
-          <h3 className="del">
-            {" "}
-            <FaIcons.FaTrash />
-          </h3>
+          <div onClick={() => handleDelete()}>
+            <h3 className="delete">
+              {" "}
+              <FaIcons.FaTrash />
+            </h3>
+          </div>
         </figcaption>
       </div>
       <div className="card_footer">
