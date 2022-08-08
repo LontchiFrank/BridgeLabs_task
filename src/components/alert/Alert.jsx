@@ -18,22 +18,29 @@ function Alert({ shows, toggleAlert, type }) {
       <>
         <div className="main1">
           <div className="modal_form1">
-            <div style={{ width: "100%", height: "60%" }}>
+            <div
+              style={{
+                width: "100%",
+                height: "70%",
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
               {type == "success" ? (
                 <img
                   src={tick}
                   alt=""
-                  style={{ width: "100%", height: "100%" }}
+                  style={{ width: "50%", height: "60%" }}
                 />
               ) : (
                 <img
                   src={cross}
                   alt=""
-                  style={{ width: "100%", height: "100%" }}
+                  style={{ width: "50%", height: "60%" }}
                 />
               )}
             </div>
-            <div style={{ width: "100%", height: "60%" }}>
+            <div style={{ width: "100%", height: "30%", textAlign: "center" }}>
               {type == "success" ? <h3>Success</h3> : <h3>Failed</h3>}
             </div>
           </div>
