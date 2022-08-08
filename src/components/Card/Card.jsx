@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import "./card.css";
 import * as FaIcons from "react-icons/fa";
 import * as IoIcons from "react-icons/io";
+import Modal from "../Modal/Modal";
+import EditModal from "../EdiModal/EditModal";
 function Card({ el }) {
   const [check, setCheck] = useState([
     { back: "#e1f5fe", text: "#63c2ed" },
@@ -9,6 +11,7 @@ function Card({ el }) {
     { back: "#fde7dc", text: "#e1733b" },
     { back: "#dbfdee", text: "#4ad296" },
   ]);
+  const [show, setShow] = useState(false);
   const couleur = check[Math.floor(Math.random() * check.length)];
   console.log(couleur);
 
@@ -21,17 +24,22 @@ function Card({ el }) {
   }
   function truncateStringDescription(string, limit) {
     if (string.length > limit) {
-      return string.substring(0, limit) + "...";
+      return string.substring(0, limit);
     } else {
       return string;
     }
   }
+  const handleUpdate = () => {
+    setShow(true);
+    console.log(show);
+  };
 
   const date = truncateString(el.created_at, 10);
   const describe = truncateStringDescription(el.description, 12);
 
   return (
     <div className="card">
+      <EditModal category={el} show={show} onClose={() => setShow(false)} />
       <div className="card_head">
         <div className="card_name" style={{ backgroundColor: couleur.back }}>
           <h4 style={{ color: couleur.text }}>{el.name} </h4>
@@ -45,9 +53,11 @@ function Card({ el }) {
           style={{ width: "100%", height: "100%" }}
         />
         <figcaption>
-          <h3 style={{ marginRight: "8px" }}>
-            <FaIcons.FaPen />{" "}
-          </h3>
+          <div onClick={() => handleUpdate()}>
+            <h3 style={{ marginRight: "8px" }}>
+              <FaIcons.FaPen />{" "}
+            </h3>
+          </div>
           <h3 className="del">
             {" "}
             <FaIcons.FaTrash />

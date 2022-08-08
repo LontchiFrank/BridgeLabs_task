@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import { FaCross, FaTimes } from "react-icons/fa";
-import { createCategory } from "../../redux/actions/categories";
+import {
+  createCategory,
+  _updateCategory,
+} from "../../redux/actions/categories";
 import Alert from "../alert/Alert";
-import "./Modal.css";
+import "../Modal/Modal.css";
 
-function Modal({ show, onClose }) {
+function EditModal({ show, onClose, category }) {
   const [showing, setShowing] = useState(false);
   const [formData, setFormData] = useState({
-    name: "",
-    description: "",
+    name: category.name,
+    description: category.description,
   });
   const { name, description } = formData;
   const [selectedImage, setSelectedImage] = useState();
@@ -24,7 +27,7 @@ function Modal({ show, onClose }) {
     let image = e.target.files[0];
     setSelectedImage(image);
   };
-
+  const id = category.id;
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -32,11 +35,10 @@ function Modal({ show, onClose }) {
     dataToSend.append("image", selectedImage);
     dataToSend.append("name", name);
     dataToSend.append("description", description);
-
-    createCategory(dataToSend)
+    console.log(dataToSend, id);
+    _updateCategory(dataToSend, id)
       .then((res) => {
         console.log(res);
-        setShowing(true);
       })
       .catch((err) => {
         console.log(err);
@@ -44,7 +46,7 @@ function Modal({ show, onClose }) {
   };
 
   return (
-    <>
+    <div>
       <div className="main2">
         <Alert
           bool={showing}
@@ -61,7 +63,7 @@ function Modal({ show, onClose }) {
               paddingTop: "1em",
             }}
           >
-            <h1>Create New category</h1>
+            <h1>Edit Category</h1>
             <FaTimes
               onClick={onClose}
               style={{
@@ -112,8 +114,8 @@ function Modal({ show, onClose }) {
           </form>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
-export default Modal;
+export default EditModal;

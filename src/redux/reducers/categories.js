@@ -1,4 +1,4 @@
-import { CREATE_CATEGORIES, GET_CATEGORIES } from "../Types";
+import { CREATE_CATEGORIES, GET_CATEGORIES, UPDATED_CATEGORY } from "../Types";
 
 const initialState = {
   categories: null,
@@ -22,6 +22,11 @@ export default function (state = initialState, action) {
         newcategory: payload,
         loading: false,
         error: null,
+      };
+    case UPDATED_CATEGORY:
+      return {
+        ...state,
+        categories: payload,
       };
     default:
       return state;

@@ -1,5 +1,11 @@
-import { CREATE_CATEGORIES, GET_CATEGORIES } from "../Types";
+import { CREATE_CATEGORIES, GET_CATEGORIES, UPDATED_CATEGORY } from "../Types";
 import axios from "axios";
+
+const config = {
+  headers: {
+    "Content-Type": "application/json",
+  },
+};
 
 export const _getCategories = async () => {
   try {
@@ -38,19 +44,38 @@ export const createCategory = async (data) => {
     }
   }
 };
-const _updateCategory = async (data) => {
+export const _updateCategory = async (data, id) => {
   try {
     let res = await axios.put(
-      `${process.env.REACT_APP_URL}/users/UpdateProfile`,
+      `${process.env.REACT_APP_URL}/api/category/update/${id}`,
       data
     );
-    return res.data;
+    console.log(res.data);
+    return {
+      type: UPDATED_CATEGORY,
+      payload: res.data,
+    };
   } catch (err) {
     if (err.response.data) {
       return {
         errorMessage: err.response.data.msg,
         code: 400,
       };
+    } else {
+      return { errorMessage: err.message, code: 400 };
+    }
+  }
+};
+
+export const _deleteCategory = async (id) => {
+  try {
+    const res = await axios.delete(
+      `${process.env.REACT_APP_URL}/api/category/delete/${id}`
+    );
+    return res.data;
+  } catch (err) {
+    if (err.response.data) {
+      return { errorMessage: err.response.data.msg, code: 400 };
     } else {
       return { errorMessage: err.message, code: 400 };
     }
