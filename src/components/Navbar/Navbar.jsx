@@ -6,6 +6,7 @@ import { SidebarData } from "../Sidebar/SidebarData";
 
 import "./Navbar.css";
 import { IconContext } from "react-icons";
+import { logout } from "../../redux/actions/auth";
 
 function Navbar() {
   const [sidebar, setSidebar] = useState(false);
@@ -39,7 +40,11 @@ function Navbar() {
                 <li key={index} className={item.cName}>
                   <Link to={item.path}>
                     {item.icon}
-                    <span>{item.title}</span>
+                    {item.title == "Logout" ? (
+                      <span onClick={() => logout()}>{item.title}</span>
+                    ) : (
+                      <span>{item.title}</span>
+                    )}
                   </Link>
                 </li>
               );

@@ -2,8 +2,7 @@ import React, { useEffect } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import Home from "./pages/Home/Home";
-import Products from "./pages/Products/Products";
-import Profile from "./pages/Profile/Profile";
+import Landing from "./pages/Landing/Landing";
 import Signin from "./pages/Signin/Signin";
 import Signup from "./pages/Signup/Signup";
 
@@ -22,13 +21,11 @@ function Navigation() {
     <BrowserRouter>
       <ScrollToTop>
         <Routes>
-          <Route exact path="/" />
+          <Route exact path="/" element={<Landing />} />
           <Route exact path="/signup" element={<Signup />} />
           <Route exact path="/signin" element={<Signin />} />
           <Route exact path="/dashboard" element={<Dashboard />} />
           <Route path="/home" element={<Home />} />
-          <Route path="/products" element={<Products />} />
-          <Route path="/profile" element={<Profile />} />
         </Routes>
       </ScrollToTop>
     </BrowserRouter>

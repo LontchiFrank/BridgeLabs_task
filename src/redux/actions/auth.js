@@ -52,3 +52,20 @@ export const login = async (data) => {
     }
   }
 };
+
+export const logout = async () => {
+  try {
+    const res = await axios.get(`${process.env.REACT_APP_URL}/api/user/logout`);
+    console.log(res, "yo baby");
+    return res;
+  } catch (err) {
+    if (err.response.data) {
+      return {
+        errorMessage: err.response.data.msg,
+        code: 400,
+      };
+    } else {
+      return { errorMessage: err.message, code: 400 };
+    }
+  }
+};
