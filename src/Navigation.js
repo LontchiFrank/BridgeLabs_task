@@ -4,6 +4,7 @@ import Dashboard from "./pages/Dashboard/Dashboard";
 import Home from "./pages/Home/Home";
 import Products from "./pages/Products/Products";
 import Profile from "./pages/Profile/Profile";
+import Signin from "./pages/Signin/Signin";
 import Signup from "./pages/Signup/Signup";
 
 function ScrollToTop({ children }) {
@@ -22,6 +23,7 @@ function Navigation() {
       <ScrollToTop>
         <Routes>
           <Route exact path="/" element={<Signup />} />
+          <Route exact path="/signin" element={<Signin />} />
           <Route exact path="/dashboard" element={<Dashboard />} />
           <Route path="/home" element={<Home />} />
           <Route path="/products" element={<Products />} />

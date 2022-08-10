@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Alert from "../../components/alert/Alert";
 import { login, registerUsers } from "../../redux/actions/auth";
 import Signin from "../Signin/Signin";
@@ -102,21 +102,25 @@ function Signup() {
                 Intelligence
               </p>
             </div>
-            <div className="foot">
-              <p>
-                Simply Unbelievable satisfied with my projects and business.! If
-                you already have an account Login.
-              </p>
+            <div className="hod_foot">
+              <div className="foot">
+                <p>
+                  Simply Unbelievable satisfied with my projects and business.!
+                  If you already have an account Login.
+                </p>
 
-              {isOpen ? (
-                <div className="bton">
-                  <button onClick={() => handleSecondClick()}>Register</button>
-                </div>
-              ) : (
-                <div className="bton">
-                  <button onClick={() => handleClick()}>Login</button>
-                </div>
-              )}
+                {isOpen ? (
+                  <div className="bton">
+                    <button onClick={() => handleSecondClick()}>
+                      Register
+                    </button>
+                  </div>
+                ) : (
+                  <div className="bton">
+                    <button onClick={() => handleClick()}>Login</button>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>
@@ -198,6 +202,13 @@ function Signup() {
                   <button type="submit">Create Account</button>
                 </div>
               </form>
+              <div
+                style={{ width: "100%", height: "100%", textAlign: "center" }}
+              >
+                <p>
+                  Already have an account? <Link to="/signin">SignIn</Link>
+                </p>
+              </div>
             </div>
           </div>
         )}
