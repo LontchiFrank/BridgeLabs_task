@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import "../Signup/Signup.css";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { login } from "../../redux/actions/auth";
 import Alert from "../../components/alert/Alert";
 function Signin() {
@@ -78,6 +78,11 @@ function Signin() {
             <button>Login</button>
           </div>
         </form>
+        <div style={{ width: "100%", height: "100%", textAlign: "center" }}>
+          <p>
+            Don't have an account? <Link to="/signup">SignUp</Link>
+          </p>
+        </div>
       </div>
     </div>
   );
