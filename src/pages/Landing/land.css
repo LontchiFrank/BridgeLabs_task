@@ -210,3 +210,130 @@ nav .icon-burger .line {
     opacity: 0;
   }
 }
+
+@media screen and (min-width: 1301px) and (max-width: 1500px) {
+  .land1 {
+    width: 60%;
+    height: 100%;
+    display: flex;
+  }
+  .land2 {
+    width: 40%;
+    height: 100%;
+    display: flex;
+  }
+  .carry {
+    width: 80%;
+    height: 50%;
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  .land1 {
+    width: 60%;
+    height: 100%;
+    display: flex;
+  }
+  .land2 {
+    width: 40%;
+    height: 100%;
+    display: flex;
+  }
+  .carry {
+    width: 80%;
+    height: 50%;
+  }
+  .bolon2 {
+    width: 30%;
+    height: 17%;
+  }
+  .bolon3 {
+    width: 30%;
+    height: 17%;
+  }
+}
+@media screen and (max-width: 1005px) {
+  .land1_txt {
+    width: 100%;
+    height: 50%;
+  }
+}
+@media screen and (max-width: 900px) {
+  .lands {
+    display: flex;
+    flex-direction: column;
+  }
+  .land1 {
+    width: 90%;
+    height: 100%;
+    display: flex;
+  }
+  .land1_txt {
+    padding-top: 3em;
+    width: 100%;
+    height: 40%;
+  }
+  .land2 {
+    /* width: 90%;
+    height: 50%;
+    display: flex;
+    justify-content: center; */
+    display: none;
+  }
+  .carry {
+    width: 60%;
+    height: 80%;
+  }
+  .bolon1 {
+    width: 22%;
+  }
+}
+@media screen and (max-width: 1005px) {
+  .land1_txt {
+    width: 100%;
+    height: 50%;
+  }
+}
+@media screen and (max-width: 745px) {
+  .land1_txt {
+    padding-top: 3em;
+    width: 100%;
+    height: 50%;
+  }
+  .land1_txt {
+    padding-top: 2em;
+    width: 100%;
+    height: 30%;
+    margin-bottom: 0px;
+  }
+  .land1_txt h1 {
+    font-size: 1.3em !important;
+  }
+  .land1_txt p {
+    font-size: 1em !important;
+  }
+}
+@media screen and (max-width: 630px) {
+  .land1 {
+    padding: 2em;
+  }
+  .land1_txt {
+    padding-top: 2em;
+    width: 100%;
+    height: 35%;
+    margin-bottom: 0px;
+  }
+  .land1_txt h1 {
+    font-size: 1.3em !important;
+  }
+  .land1_txt p {
+    font-size: 1em !important;
+  }
+}
+/* @media screen and (max-width: 490px) {
+  .land1_txt {
+    padding-top: 3em;
+    width: 100%;
+    height: 100%;
+  }
+} */
