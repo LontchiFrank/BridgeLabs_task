@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import { FaPlus } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import Alert from "../../components/alert/Alert";
@@ -8,6 +8,15 @@ import Modal from "../../components/Modal/Modal";
 import Navbar from "../../components/Navbar/Navbar";
 import { _getCategories } from "../../redux/actions/categories";
 import "./Home.css";
+
+function PostSkeleton() {
+  return (
+    <div className="skeleton">
+      <div className="skeleton_head"></div>
+      <div className="skeleton_body"></div>
+    </div>
+  );
+}
 
 function Home() {
   const [category, setCategory] = useState();
@@ -58,12 +67,20 @@ function Home() {
             </div>
           </div>
           <div className="hold">
-            {category &&
-              category.map((el, key) => (
-                <div key={key} className="arrainged">
-                  <Card el={el} />
+            <Suspense
+              fallback={
+                <div>
+                  <PostSkeleton />
                 </div>
-              ))}
+              }
+            >
+              {category &&
+                category.map((el, key) => (
+                  <div key={key} className="arrainged">
+                    <Card el={el} />
+                  </div>
+                ))}
+            </Suspense>
           </div>
         </div>
       </div>

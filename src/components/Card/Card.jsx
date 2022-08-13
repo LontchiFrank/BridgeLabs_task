@@ -23,6 +23,7 @@ function Card({ el }) {
       return string;
     }
   }
+
   function truncateStringDescription(string, limit) {
     if (string.length > limit) {
       return string.substring(0, limit);
