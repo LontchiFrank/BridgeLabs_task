@@ -29,9 +29,7 @@ function Home() {
   return (
     <div className="set">
       <Modal show={show} onClose={() => setShow(false)} />
-      {/* <div style={{ width: "15%", height: "100%" }}> */}
       <Navbar />
-      {/* </div> */}
       <div
         style={{
           width: "100%",
