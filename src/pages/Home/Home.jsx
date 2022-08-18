@@ -1,9 +1,10 @@
-import React, { useState, useEffect, Suspense } from "react";
+import React, { useState, useEffect } from "react";
 import { FaPlus } from "react-icons/fa";
+import { useLottie } from "lottie-react";
 import { useDispatch } from "react-redux";
 import Alert from "../../components/alert/Alert";
-import loader from "../../assets/3.gif";
 import Lottie from "lottie-react";
+import loader from "../../json/loader.json";
 
 import Card from "../../components/Card/Card";
 import Modal from "../../components/Modal/Modal";
@@ -35,11 +36,25 @@ function Post() {
         console.log(err);
       });
   }, []);
+  const options = {
+    animationData: loader,
+    loop: true,
+  };
+  const { View } = useLottie(options);
+  console.log(category);
   return (
     <div className="hold">
-      {category && category === null ? (
-        <div>
-          <img src={loader} style={{ width: "100%", height: "100%" }} />
+      {category && category.length === null ? (
+        <div
+          style={{
+            width: "100%",
+            height: "100%",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <div style={{ width: "70%", height: "70%" }}>{View}</div>
         </div>
       ) : (
         category &&
@@ -100,9 +115,10 @@ function Home() {
             </div>
           </div>
           <div className="hold">
-            <Suspense fallback={<PostSkeleton />}>
-              <Post />
-            </Suspense>
+            {/* <Suspense fallback={<PostSkeleton />}>
+           
+            </Suspense> */}
+            <Post />
           </div>
         </div>
       </div>
